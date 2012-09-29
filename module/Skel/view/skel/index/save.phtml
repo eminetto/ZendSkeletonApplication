@@ -1,0 +1,17 @@
+<?php //echo $this->partial('partials/headerRecurso.phtml')?>
+<form action="/skel/index/save" method="post">
+  <fieldset>
+    <input type="hidden" name="id" value="<?php if(isset($post)) echo $post->id; ?>">
+    <div>
+      <label for="title">Título*</label>
+      <input type="text" name="title" id="nome" title="Insira o título do post." class="required" data-error-message="Título obrigatório" value="<?php if(isset($post)) echo $post->title; ?>"/>
+    </div>
+    <div>
+      <label for="body">Texto</label>
+      <textarea name="body" id="body" data-error-message="Texto obrigatório"><?php if(isset($post)) echo $post->body; ?></textarea>
+    </div>
+    <div class="actions clearfix">
+      <input type="submit" class="btn submit" value="Salvar" title="Salvar" /><input type="reset" class="btn" value="Limpar" title="Limpar" />
+    </div>
+  </fieldset>
+</form>

@@ -1,0 +1,29 @@
+<phpunit
+    bootstrap="Bootstrap.php"
+    colors="true"
+    backupGlobals="false"
+>
+<!-- Mudar os nomes do Módulo -->
+    <testsuites>
+        <testsuite name="Skel Test Suite">
+            <directory>./</directory>
+        </testsuite>
+    </testsuites>
+
+    <!-- Code Coverage Configuration -->
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../</directory>
+            <exclude>
+                <directory suffix=".php">./</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="_reports/coverage" title="Modulo Skel" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="_reports/logs/clover.xml"/>
+        <log type="junit" target="_reports/logs/junit.xml" logIncompleteSkipped="false"/>
+        <log type="testdox-text" target="_reports/testdox/executed.txt"/>
+    </logging>
+</phpunit>

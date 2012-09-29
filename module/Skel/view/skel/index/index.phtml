@@ -1,0 +1,31 @@
+<?php //echo $this->partial('partials/headerRecurso.phtml')?>
+<div class="actions clearfix">
+  <div class="btns">
+    <a class="btn submit" href="/skel/index/save" title="Criar Post">Criar Post</a>
+  </div>
+</div>  
+<label class="divisor"><span>Lista de Posts</span></label>
+<table class="datatable">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Texto</th>
+      <th width="130" class="center">Data de Cadastro</th>
+      <th width="120" class="center">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($posts as $post):?>
+      <tr>
+        <td><?php echo $this->escapeHtml($post->title);?></td>
+        <td><?php echo $this->escapeHtml($post->body);?></td>
+        <td class="center"><?php echo $this->dateFormat($post->criado, IntlDateFormatter::SHORT, IntlDateFormatter::SHORT, 'pt_BR');?></td>
+        <td class="center">
+          <a href="/skel/index/save/<?php echo $post->id;?>" title="Editar" class="btn"><span class="ui-icon ui-icon-pencil"></span></a>
+          <a href="/skel/index/delete/<?php echo $post->id;?>" rel="confirmation" title="Deseja excluir este registro?" class="btn"><span class="ui-icon ui-icon-circle-close"></span></a>
+        </td>
+      </tr>
+    <?php endforeach;?>
+</table>
+<!-- paginator -->
+<?php //echo $this->data;?>
