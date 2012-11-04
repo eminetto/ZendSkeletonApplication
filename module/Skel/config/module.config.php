@@ -4,32 +4,46 @@
 return array(
     'controllers' => array( //add module controllers
         'invokables' => array(
-            'index' => 'Skel\Controller\IndexController'
+            'Skel\Controller\Index' => 'Skel\Controller\IndexController',
         ),
     ),
 
     'router' => array(
         'routes' => array(
-
-            'skel' => array( //change to the module's name
-                'type'    => 'Segment',
+            'skel' => array(
+                'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/skel[/:controller[/:action[/:id]]]', //change to the module's name
-                    'constraints' => array(
-                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ),
+                    'route'    => '/skel',
                     'defaults' => array(
-                        'controller' => 'index',
-                        'action'     => 'index',
-                        'module' => 'skel', //change to the module's name
+                        '__NAMESPACE__' => 'Skel\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
                     ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                        'child_routes' => array( //permite mandar dados pela url 
+                            'wildcard' => array(
+                                'type' => 'Wildcard'
+                            ),
+                        ),
+                    ),
+                    
                 ),
             ),
         ),
     ),
-    
     'view_manager' => array( //the module can have a specific layout
         // 'template_map' => array(
         //     'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
