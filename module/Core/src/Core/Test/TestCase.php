@@ -114,6 +114,11 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             $dbAdapter->query('PRAGMA foreign_keys = ON;', Adapter::QUERY_MODE_EXECUTE);
         }
 
+        if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
+            //enable foreign keys on sqlite
+            $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
+        }
+
         $queries = include \Bootstrap::getModulePath() . '/data/test.data.php';
         foreach ($queries as $query) {
             $dbAdapter->query($query['create'], Adapter::QUERY_MODE_EXECUTE);
@@ -130,6 +135,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Sqlite' ) {
             //disable foreign keys on sqlite
             $dbAdapter->query('PRAGMA foreign_keys = OFF;', Adapter::QUERY_MODE_EXECUTE);
+        }
+        if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
+            //enable foreign keys on sqlite
+            $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
         }
 
         $queries = include \Bootstrap::getModulePath() . '/data/test.data.php';
