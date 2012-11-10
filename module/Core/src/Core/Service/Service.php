@@ -42,9 +42,9 @@ abstract class Service implements ServiceManagerAwareInterface
     {
         $sm = $this->getServiceManager();
         $dbAdapter = $sm->get('DbAdapter');
-        $tableGateway = new TableGateway($dbAdapter);
-        $object = new $table;
-        $tableGateway->initialize($object->getTableName(), $object );
+        $tableGateway = new TableGateway($dbAdapter, $table, new $table);
+        $tableGateway->initialize();
+
         return $tableGateway;
     }
 

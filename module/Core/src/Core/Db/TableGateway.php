@@ -17,20 +17,27 @@ class TableGateway extends AbstractTableGateway
      */
     protected $primaryKeyField;
 
-    public function __construct(Adapter $adapter)
+    /**
+     * ObjectPrototype
+     * @var stdClass
+     */
+    protected $objectPrototype;
+
+    public function __construct(Adapter $adapter, $table, $objectPrototype)
     {
         $this->adapter = $adapter;
+        $this->table = $objectPrototype->getTableName();
+        $this->objectPrototype = $objectPrototype;
+        $this->resultSetPrototype = new ResultSet();
+        $this->resultSetPrototype->setArrayObjectPrototype($objectPrototype);
     }
 
-    public function initialize($tableName, $object)
-    {
-        $this->table = $tableName;
-        $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype->setArrayObjectPrototype($object);
 
+    public function initialize()
+    {
         parent::initialize();
 
-        $this->primaryKeyField = $object->primaryKeyField;
+        $this->primaryKeyField = $this->objectPrototype->primaryKeyField;
         if ( ! is_string($this->primaryKeyField)) {
             $this->primaryKeyField = 'id';
         }

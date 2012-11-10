@@ -84,10 +84,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     {
         $sm = $this->serviceManager;
         $dbAdapter = $sm->get('DbAdapter');
-        $tableGateway = new TableGateway($dbAdapter);
-
-        $object = new $table;
-        $tableGateway->initialize($object->getTableName(), $object );
+        $tableGateway = new TableGateway($dbAdapter, $table, new $table);
+        $tableGateway->initialize();
+        
         return $tableGateway;
     }
 
@@ -114,10 +113,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             $dbAdapter->query('PRAGMA foreign_keys = ON;', Adapter::QUERY_MODE_EXECUTE);
         }
 
-        if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
-            //enable foreign keys on sqlite
-            $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
-        }
+        // if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
+        //     //enable foreign keys on sqlite
+        //     $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
+        // }
 
         $queries = include \Bootstrap::getModulePath() . '/data/test.data.php';
         foreach ($queries as $query) {
@@ -136,10 +135,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             //disable foreign keys on sqlite
             $dbAdapter->query('PRAGMA foreign_keys = OFF;', Adapter::QUERY_MODE_EXECUTE);
         }
-        if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
-            //enable foreign keys on sqlite
-            $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
-        }
+        // if ( get_class($dbAdapter->getPlatform()) == 'Zend\Db\Adapter\Platform\Mysql' ) {
+        //     //enable foreign keys on sqlite
+        //     $dbAdapter->query('SET FOREIGN_KEY_CHECKS = 0;', Adapter::QUERY_MODE_EXECUTE);
+        // }
 
         $queries = include \Bootstrap::getModulePath() . '/data/test.data.php';
         foreach ($queries as $query) {
