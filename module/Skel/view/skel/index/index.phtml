@@ -21,8 +21,8 @@
         <td><?php echo $this->escapeHtml($post->body);?></td>
         <td class="center"><?php echo $this->dateFormat($post->criado, IntlDateFormatter::SHORT, IntlDateFormatter::SHORT, 'pt_BR');?></td>
         <td class="center">
-          <a href="/skel/index/save/<?php echo $post->id;?>" title="Editar" class="btn"><span class="ui-icon ui-icon-pencil"></span></a>
-          <a href="/skel/index/delete/<?php echo $post->id;?>" rel="confirmation" title="Deseja excluir este registro?" class="btn"><span class="ui-icon ui-icon-circle-close"></span></a>
+          <a href="/skel/index/save/<?php echo $post->id;?>" title="Editar" class="btn"><i class="icon-edit"></i></a>
+          <a href="/skel/index/delete/<?php echo $post->id;?>" rel="confirmation" title="Deseja excluir este registro?" class="btn"><i class="icon-remove"></i></a>
         </td>
       </tr>
     <?php endforeach;?>
