@@ -1,20 +1,19 @@
-
-# TODO
-- Translate comments to english
-- Add Form example in Skel module
-- Review this README
-
-
-
 ZendSkeletonApplication
 =======================
 
 Introduction
 ------------
 This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+systems, based in the [http://github.com/zendframework/ZendSkeletonApplication](http://github.com/zendframework/ZendSkeletonApplication)
+Features added:
 
+- Core module with 
+    - TableGateway implementation
+    - PHPUnit tests
+    - Entity class
+    - Service class
+    - AdapterServiceFactory using module-based db configuration
+     
 
 Installation
 ------------
@@ -25,15 +24,10 @@ The recommended way to get a working copy of this project is to clone the reposi
 and use composer to install dependencies:
 
     cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
+    git clone git://github.com/eminetto/ZendSkeletonApplication.git
     cd ZendSkeletonApplication
     php composer.phar install
 
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
 
 Virtual Host
 ------------
