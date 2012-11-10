@@ -18,6 +18,7 @@ return array(
                         '__NAMESPACE__' => 'Skel\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
+                        'module'        => 'skel'
                     ),
                 ),
                 'may_terminate' => true,
