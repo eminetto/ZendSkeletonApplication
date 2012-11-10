@@ -26,4 +26,7 @@
         <log type="junit" target="_reports/logs/junit.xml" logIncompleteSkipped="false"/>
         <log type="testdox-text" target="_reports/testdox/executed.txt"/>
     </logging>
+    <php>
+        <env name="PROJECT_ROOT" value="."/>
+    </php>
 </phpunit>
