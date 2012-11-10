@@ -14,7 +14,8 @@ Features added:
     - Entity class
     - Service class
     - AdapterServiceFactory using module-based db configuration
-     
+
+- Skel module
 
 Installation
 ------------
