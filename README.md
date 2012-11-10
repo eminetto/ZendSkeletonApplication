@@ -5,6 +5,7 @@ Introduction
 ------------
 This is a simple, skeleton application using the ZF2 MVC layer and module
 systems, based in the [http://github.com/zendframework/ZendSkeletonApplication](http://github.com/zendframework/ZendSkeletonApplication)
+
 Features added:
 
 - Core module with 
