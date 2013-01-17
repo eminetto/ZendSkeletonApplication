@@ -126,6 +126,9 @@ class PermissaoTest extends ModelTestCase
         $comment = $tableGateway->get($id);
     }
 
+    /**
+     * Adiciona um novo post para o teste
+     */
     private function addPost()
     {
         $post = new Post();
@@ -136,6 +139,9 @@ class PermissaoTest extends ModelTestCase
         return $saved;
     }
 
+    /**
+     * Adiciona um novo comentário para o teste
+     */
     private function addComment() 
     {
         $post = $this->addPost();
