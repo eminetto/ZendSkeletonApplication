@@ -45,10 +45,11 @@ return array(
             ),
         ),
     ),
-    'view_manager' => array( //the module can have a specific layout
-        // 'template_map' => array(
-        //     'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-        // ),
+    //the module can have a specific layout
+    'module_layout' => array(
+        'Skel' => 'layout/layout_skel.phtml'
+    ),
+    'view_manager' => array( 
         'template_path_stack' => array(
             'skel' => __DIR__ . '/../view',
         ),
