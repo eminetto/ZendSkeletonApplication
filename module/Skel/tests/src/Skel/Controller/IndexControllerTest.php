@@ -92,6 +92,7 @@ class IndexControllerTest extends ControllerTestCase
         $this->routeMatch->setParam('action', 'save');
         
         $this->request->setMethod('post');
+        $this->request->getPost()->set('id', '');
         $this->request->getPost()->set('title', 'Apple compra a Coderockr');
         $this->request->getPost()->set(
             'body', 'A Apple compra a <b>Coderockr</b><br> '
